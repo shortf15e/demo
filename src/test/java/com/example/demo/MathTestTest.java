@@ -8,7 +8,8 @@ public class MathTestTest {
 
     @Test
     public void testAdd() {
-        MathTest add = new MathTest("add", 2, 3);
+        MathService add = new MathService();
+        String strresult = add.calculate("add", 2, 3);
         int result = add.getAnswer();
         int expected = 5;
         assertEquals(expected, result);
