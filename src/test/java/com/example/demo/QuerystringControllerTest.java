@@ -9,19 +9,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 
-@WebMvcTest(EndpointsController.class)
+@WebMvcTest(QuerystringController.class)
 
-public class EndpointsControllerTest {
-
+public class QuerystringControllerTest {
     @Autowired
     MockMvc mvc;
-
-    @Test
-    public void testMathPi() throws Exception {
-        this.mvc.perform(get("/math/pi"))
-                .andExpect(status().isOk())
-                .andExpect(content().string("3.141592653589793"));
-    }
 
     @Test
     public void testMathCalculate() throws Exception {
@@ -29,4 +21,5 @@ public class EndpointsControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string("3.141592653589793"));
     }
+
 }
