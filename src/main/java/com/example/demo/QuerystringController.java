@@ -1,9 +1,8 @@
 package com.example.demo;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.Map;
 
 @RestController
 public class QuerystringController {
@@ -19,10 +18,24 @@ public class QuerystringController {
     public String sum(@RequestParam Integer [] n) {
         StringBuilder str = new StringBuilder();
         int sum = 0;
-        for (x : n) {
-            
+        for (int x : n) {
+            sum += x;
+            str.append(x + "+");
         }
+        return str.toString();
     }
+
+    @RequestMapping("/math/volume/{l}/{w}/{h}")
+    public String volumeCalculator(@PathVariable int l, @PathVariable int w, @PathVariable int h) {
+        StringBuilder str = new StringBuilder();
+        Integer answer = l*w*h;
+        str.append("The volume of a " + l + "x" + w + "x" + h);
+        str.append(" rectangle is " + answer);
+        return str.toString();
+
+    }
+
+
 
 }
 
