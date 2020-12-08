@@ -10,4 +10,9 @@ public class PagesController {
     public String hello() {
         return "Hello World!";
     }
+
+    @GetMapping("/math/")
+    public String math() {
+        return "This is the math page";
+    }
 }
