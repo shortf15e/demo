@@ -1,8 +1,11 @@
 package com.example.demo;
 
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
+
+
 
 @RestController
 public class QuerystringController {
@@ -14,14 +17,16 @@ public class QuerystringController {
         return print;
     }
 
-    @PostMapping("/math/num")
+    @PostMapping("/math/sum")
     public String sum(@RequestParam Integer [] n) {
         StringBuilder str = new StringBuilder();
-        int sum = 0;
-        for (int x : n) {
-            sum += x;
-            str.append(x + "+");
+        int sum = n[0];
+        str.append(n[0]);
+        for (int i = 1; i < n.length; i++) {
+            sum += n[i];
+            str.append(" + " + n[i]);
         }
+        str.append(" = " + sum);
         return str.toString();
     }
 

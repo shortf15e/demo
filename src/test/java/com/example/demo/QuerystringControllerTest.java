@@ -44,6 +44,13 @@ public class QuerystringControllerTest {
     }
 
     @Test
+    public void testMathSum() throws Exception {
+        this.mvc.perform(post("/math/sum/?n=4&n=5&n=6"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("4 + 5 + 6 = 15"));
+    }
+
+    @Test
     public void testVolumeGET() throws Exception {
         this.mvc.perform(get("/math/volume/3/4/5"))
                 .andExpect(status().isOk())
