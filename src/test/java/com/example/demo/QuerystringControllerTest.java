@@ -16,10 +16,30 @@ public class QuerystringControllerTest {
     MockMvc mvc;
 
     @Test
-    public void testMathCalculate() throws Exception {
-        this.mvc.perform(get("/math/calculate"))
+    public void testMathCalculateAdd() throws Exception {
+        this.mvc.perform(get("/math/calculate/?operation=add&x=2&y=3"))
                 .andExpect(status().isOk())
-                .andExpect(content().string("3.141592653589793"));
+                .andExpect(content().string("2 + 3 = 5"));
+    }
+
+    @Test
+    public void testMathCalculateSubtract() throws Exception {
+        this.mvc.perform(get("/math/calculate/?operation=subtract&x=2&y=3"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("2 - 3 = -1"));
+    }
+    @Test
+    public void testMathCalculateMultiply() throws Exception {
+        this.mvc.perform(get("/math/calculate/?operation=multiply&x=2&y=3"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("2 * 3 = 6"));
+    }
+
+    @Test
+    public void testMathCalculateDivide() throws Exception {
+        this.mvc.perform(get("/math/calculate/?operation=divide&x=6&y=2"))
+                .andExpect(status().isOk())
+                .andExpect(content().string("6 / 2 = 3"));
     }
 
 }
