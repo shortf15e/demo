@@ -23,10 +23,4 @@ public class EndpointsControllerTest {
                 .andExpect(content().string("3.141592653589793"));
     }
 
-    @Test
-    public void testMathCalculate() throws Exception {
-        this.mvc.perform(get("/math/calculate"))
-                .andExpect(status().isOk())
-                .andExpect(content().string("3.141592653589793"));
-    }
 }

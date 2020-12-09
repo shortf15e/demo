@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import org.springframework.http.MediaType;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,6 +32,11 @@ public class QuerystringController {
         str.append(" rectangle is " + answer);
         return str.toString();
 
+    }
+
+    @PostMapping(value = "/math/area", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public String areaCalculator(Shape shape) {
+        return shape.area();
     }
 
 
