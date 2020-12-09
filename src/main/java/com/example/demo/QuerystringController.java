@@ -35,7 +35,7 @@ public class QuerystringController {
     }
 
     @PostMapping(path = "/math/area", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
-    public String areaCalculator(@RequestParam Shape shape) {
+    public String areaCalculator(@RequestBody Shape shape) {
         return shape.area();
     }
 

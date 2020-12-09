@@ -56,8 +56,8 @@ public class FlightTest {
 //                .andExpect(jsonPath("$.departs", is("2017-04-21 07:04")))
 //                .andExpect(jsonPath("$.tickets.passenger.firstName", is("Some name")))
 //                .andExpect(jsonPath("$.tickets.passenger.lastName", is("Some other name")))
-                .andExpect(jsonPath("$[0].Tickets.Price", is(200)))
-                .andExpect(jsonPath("$[1].Tickets.Price", is(400)));
+                .andExpect(jsonPath("$[0].Tickets[0].Price", is(200)))
+                .andExpect(jsonPath("$[1].Tickets[0].Price", is(400)));
     }
 
 }

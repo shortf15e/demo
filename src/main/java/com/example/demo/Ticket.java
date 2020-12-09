@@ -1,29 +1,14 @@
 package com.example.demo;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-import java.util.Date;
+public class Ticket {
 
 
-public class Flights {
-    @JsonProperty("Departs")
-    private Date departs;
-    @JsonProperty("Tickets")
-    private Ticket tickets;
-
-    @JsonFormat(pattern = "yyyy-MM-dd HH:MM")
-    public Date getDeparts() {return departs;}
-    public void setDeparts(Date departs) {this.departs = departs;}
-
-    public Ticket getTickets() {return tickets;}
-    public void setTickets(Ticket tickets) {this.tickets = tickets;}
-
-    static class Ticket {
-        @JsonProperty("Passenger")
+//        @JsonProperty("Passenger")
         private Passenger passenger;
-        @JsonProperty("Price")
+//        @JsonProperty("Price")
         private int price;
 //        private List<Passenger> passengerList;
 
@@ -50,9 +35,4 @@ public class Flights {
             public String getLastName() {return lastName; }
             public void setLastName(String lastName) {this.lastName = lastName; }
         }
-    }
-
-
-
-
 }
