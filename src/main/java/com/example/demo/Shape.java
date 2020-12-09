@@ -2,9 +2,30 @@ package com.example.demo;
 
 public class Shape {
     String type;
-    int radius;
-    int length;
-    int width;
+    int radius = 0;
+    int length = 0;
+    int width = 0;
+
+    public Shape(String type, int length, int width) {
+        this.type = type;
+        this.length = length;
+        this.width = width;
+        this.radius = radius;
+    }
+
+    public Shape(String type, int radius) {
+        this.type= type;
+        this.length = length;
+        this.width = width;
+        this.radius = radius;
+    }
+
+        public Shape() {
+        this.type = "Nothing";
+        this.length = length;
+        this.width = width;
+        this.radius = radius;
+    }
 
     public void setType () {
         this.type = type;
@@ -39,22 +60,7 @@ public class Shape {
     }
 
 
-    public Shape(String type, int length, int width) {
-        this.type = type;
-        this.length = length;
-        this.width = width;
-    }
 
-    public Shape(String type, int radius) {
-        this.type= type;
-        this.radius = radius;
-    }
-
-//    public Shape() {
-//        this.type = "no shape";
-//        this.length = 1;
-//        this.width = 1;
-//    }
 
 
 
