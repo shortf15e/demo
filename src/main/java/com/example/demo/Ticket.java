@@ -22,16 +22,16 @@ public class Ticket {
 //        public void setPassengerList(List<Passenger> passengerList) {this.passengerList = passengerList;}
 
         static class Passenger {
-            @JsonProperty("FirstName")
+//            @JsonProperty("FirstName")
             private String firstName;
-            @JsonProperty("LastName")
+//            @JsonProperty("LastName")
             private String lastName;
 
-            @JsonInclude(JsonInclude.Include.NON_NULL)
+//            @JsonInclude(JsonInclude.Include.NON_NULL)
             public String getFirstName() {return firstName;}
             public void setFirstName(String firstName) {this.firstName = firstName;}
 
-            @JsonInclude(JsonInclude.Include.NON_NULL)
+//            @JsonInclude(JsonInclude.Include.NON_NULL)
             public String getLastName() {return lastName; }
             public void setLastName(String lastName) {this.lastName = lastName; }
         }
