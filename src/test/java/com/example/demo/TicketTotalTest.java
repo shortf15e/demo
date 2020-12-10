@@ -73,6 +73,7 @@ public class TicketTotalTest {
         URL url = this.getClass().getResource(path);
         return new String(Files.readAllBytes(Paths.get(url.getFile())));
     }
+
     @Test
     public void testJSONCerealFlavor() throws Exception {
         ObjectMapper objectMapper = new ObjectMapper();
