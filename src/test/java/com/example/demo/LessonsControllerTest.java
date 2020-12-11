@@ -98,5 +98,66 @@ public class LessonsControllerTest {
         assertEquals(expected, actual);
     }
 
+    @Test
+    @Transactional
+
+    public void testGetLessonByTitle() throws Exception {
+        Lesson lesson = new Lesson();
+        lesson.setId(1L);
+        lesson.setDeliveredOn(new Date(2012-1-3));
+        lesson.setTitle("Test Title");
+        repository.save(lesson);
+
+        lesson.setId(2L);
+        lesson.setDeliveredOn(new Date(2015-2-4));
+        lesson.setTitle("Test Title 2");
+        repository.save(lesson);
+
+        lesson.setId(3L);
+        lesson.setDeliveredOn(new Date());
+        lesson.setTitle("Test Title 3");
+        repository.save(lesson);
+
+        this.mvc.perform(get("/lessons/find/Test Title"))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$.id", is(1)))
+                .andExpect(jsonPath("$.title", is("Test Title")));
+
+    }
+
+    @Test
+    public void testGetLessonsByDateRange() throws Exception {
+        Lesson lesson = new Lesson();
+        lesson.setId(1L);
+        lesson.setDeliveredOn(new Date(112, 0, 4));
+        lesson.setTitle("Test Title");
+        repository.save(lesson);
+
+        lesson.setId(2L);
+        lesson.setDeliveredOn(new Date(114,2,3));
+        lesson.setTitle("Test Title 2");
+        repository.save(lesson);
+
+        lesson.setId(3L);
+        lesson.setDeliveredOn(new Date());
+        lesson.setTitle("Test Title 3");
+        repository.save(lesson);
+        String testTitle = "Test Title";
+        String date1 = "2014-01-01";
+        String date2 = "2014-12-31";
+
+        MockHttpServletRequestBuilder request = get("/lessons/between")
+                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
+                .param("startDate", date1)
+                .param("endDate", date2);
+
+
+
+        this.mvc.perform(request)
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("$[0].id", is(2)))
+                .andExpect(jsonPath("$[0].title", is("Test Title 2")));
+
+    }
 
 }

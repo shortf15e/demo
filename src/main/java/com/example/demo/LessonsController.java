@@ -4,6 +4,7 @@ import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.awt.*;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
@@ -53,6 +54,20 @@ public class LessonsController {
             }
             this.repository.save(tempLesson);
         }
+    }
+
+    @GetMapping("/find/{title}")
+    public Lesson getLessonByTitle(@PathVariable String title) {
+        String testTitle = title;
+        Lesson result = this.repository.findByTitle(title);
+        return result;
+    }
+
+    @GetMapping(path = "/between", consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE)
+    public Iterable<Lesson> getLessonByDateRange(@RequestParam String startDate, @RequestParam String endDate) {
+
+        Iterable<Lesson> result = this.repository.findLessonsBetween(startDate, endDate);
+        return result;
     }
 
 }
